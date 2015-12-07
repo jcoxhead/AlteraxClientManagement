@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 // 
-router.use(express.static(__dirname + '/../assets'))
+router.use(express.static(__dirname + '/../public'))
 router.use('/templates', express.static(__dirname + '/../templates'))
 router.use('/public', express.static(path.join(__dirname, '/../public')));
 

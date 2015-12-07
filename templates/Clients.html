@@ -1,0 +1,18 @@
+<h3>Recent Clients</h3>
+<form role='form'>
+  <div class='form-group'>
+    <div class="input-group">
+      <!--<input ng-model="clientName" class='form-control'>
+      <span class='input-group-btn'>-->
+        <!--<button ng-click='addPost()' class='btn btn-default'>Add Post</button>-->
+      </span>
+    </div>
+  </div>
+</form>
+<ul class='clients list-group'>
+  <li ng-repeat="client in clients | orderBy:'-date'" class='list-group-item'>
+    <strong>@{{ client.firstName }}</strong>
+    &nbsp;
+     <span>{{ client.lastName }}</span>
+  </li>
+</ul>

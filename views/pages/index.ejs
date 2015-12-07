@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app">
 <head>
+  	<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+	
 	<% include ../partials/head %>
 </head>
 <body class="container">
@@ -11,8 +13,8 @@
 
 	<main>
 		<div class="jumbotron">
-			<h1>This is great</h1>
-			<p>Welcome to templating using EJS</p>
+			    <ng-view></ng-view>
+			
 		</div>
 	</main>
 
@@ -20,5 +22,15 @@
 		<% include ../partials/footer %>
 	</footer>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+	
+	<script type="text/javascript" src='/javascript/app.js'></script>
+
+	<script type="text/javascript" src='/javascript/ApplicationController.js'></script>
+	<script type="text/javascript" src='/javascript/ClientsController.js'></script>
+	<script type="text/javascript" src='/javascript/routes.js'></script>
+
 </body>
 </html>
