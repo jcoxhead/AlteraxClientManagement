@@ -15,5 +15,9 @@ router.get('/about', function(req, res) {
   res.render('pages/about', { title: 'ngTodo App' });
 });
 
+router.get('/formValidation', function(req, res) {
+  res.render('pages/formValidation', { title: 'ngTodo App' });
+});
+
 
 module.exports = router;

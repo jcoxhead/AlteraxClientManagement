@@ -9,6 +9,9 @@
     </div>
   </div>
 </form>
+
+<!--<button type="button" ng-dialog="firstDialogId" ng-dialog-controller="InsideCtrl" ng-dialog-data="{{jsonData}}" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false">Add New</button>-->
+<button type="button" class="btn-primary btn-md" ng-click="open()">Add New</button>
 <ul class='clients list-group'>
   <li ng-repeat="client in clients | orderBy:'-date'" class='list-group-item'>
     <strong>@{{ client.firstName }}</strong>
@@ -16,3 +19,29 @@
      <span>{{ client.lastName }}</span>
   </li>
 </ul>
+  
+   <script type="text/ng-template" id="dialogWithNestedConfirmDialogId">
+        <div class="ngdialog-message">
+            <h3>ngDialog template</h3>
+            <form novalidate>
+              <div class="form-group">
+                  <label for="firstName">Fist Name</label>
+                  <input type="text" class="form-control" id="firstNameId" placeholder="firstName" ng-model="user.firstName" ng-minlength="3" ng-maxlength="8" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Password</label>
+                <input type="text" class="form-control" id="examlastNamepleInputPassword1" placeholder="lastName" ng-model="user.lastName" required>
+              </div>
+              <div class="checkbox">
+                <label>
+                <input type="checkbox"> Check me out
+                </label>
+              </div
+          </form>
+        </div>
+        <div class="ngdialog-buttons">
+            <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
+            <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('Save')">Save</button>
+        </div>
+    </script>
+

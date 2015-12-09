@@ -1,22 +1,77 @@
 (function()
 {
 	angular.module('app')
-   		.controller('ClientsController', ['$scope', 'Clients', ClientsController]);
+   		.controller('ClientsController', ['$scope', 'Clients', 'ngDialog', ClientsController]);
     
-    	function ClientsController($scope, Clients)
+    	function ClientsController($scope, Clients, ngDialog)
     	{
-      //     $scope.editing = [];
-      
-           Clients.success(function(data) {
-                   $scope.clients = data;
-           }).error(function(data, status)
-           {
-                 console.log(data, status);
-                 $scope.clients = '';
-           })
-     
+               $scope.clients = Clients.query(
+                  function successCallback(response) {
+                  }, function errorCallback(response) {
+                        console.log(response);
+                });
+                
+                $scope.user = '';
+                   
+                $scope.jsonData = '{"foo": "bar"}';
+                $scope.theme = 'ngdialog-theme-default1';
+                
+            //    $scope.open = function () {
+		// 		ngDialog.open({ template: 'firstDialogId', controller: 'ClientsController' });
+		// 	};
+        
+        // $scope.preCloseCallbackOnScope = function (value) {
+        //         if(confirm('Close it?')) {
+        //             return true;
+        //         }
+        //         return false;
+        //     };
+        //           
+        //        $scope.open = function () {
+        //           ngDialog.openConfirm({
+        //             template: 'firstDialogId',
+        //             className: 'ngdialog-theme-default',
+        //             controller: 'ClientsController',
+        //             scope: $scope,
+        //             preCloseCallback: 'preCloseCallbackOnScope',
+        //         }).then(function (value) {
+        //             console.log('Modal promise resolved. Value: ', value);
+        //         }, function (reason) {
+        //             console.log('Modal promise rejected. Reason: ', reason);
+        //             
+        //         });
+        //     };
+        //     
+             $scope.open = function () {
+                ngDialog.openConfirm({
+                    template: 'dialogWithNestedConfirmDialogId',
+                    className: 'ngdialog-theme-default',
+                    preCloseCallback: function(value) {
+                        var nestedConfirmDialog = ngDialog.openConfirm({
+                            template:
+                                    '<p>Are you sure you want to cancel?</p>' +
+                                    '<div class="ngdialog-buttons">' +
+                                        '<button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No' +
+                                        '<button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Yes' +
+                                    '</button></div>',
+                            plain: true,
+                            className: 'ngdialog-theme-default'
+                        });
+                        return nestedConfirmDialog;
+                    },
+                    scope: $scope
+                })
+                .then(function(value){
+                    console.log('resolved:' + value);
+                }, function(value){
+                    console.log('rejected:' + value);
+                });
+            };
 
-//           $scope.clients = Clients.query();
+
+            // $scope.editing = [];
+      
+           
 // 
 //           $scope.save = function(){
 //             if(!$scope.newTodo || $scope.newTodo.length < 1) 
