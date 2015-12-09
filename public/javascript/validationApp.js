@@ -1,5 +1,7 @@
 // create angular app
-var validationApp = angular.module('validationApp', []);
+(function()
+{
+	var validationApp = angular.module('validationApp', ['ngRoute','ngMessages', 'formly', 'formlyBootstrap']);
 
 // // create angular controller
 // validationApp.controller('mainController', function($scope) {
@@ -15,3 +17,4 @@ var validationApp = angular.module('validationApp', []);
 // 	};
 // 
 // });
+})();

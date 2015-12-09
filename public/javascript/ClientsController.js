@@ -15,33 +15,7 @@
                    
                 $scope.jsonData = '{"foo": "bar"}';
                 $scope.theme = 'ngdialog-theme-default1';
-                
-            //    $scope.open = function () {
-		// 		ngDialog.open({ template: 'firstDialogId', controller: 'ClientsController' });
-		// 	};
-        
-        // $scope.preCloseCallbackOnScope = function (value) {
-        //         if(confirm('Close it?')) {
-        //             return true;
-        //         }
-        //         return false;
-        //     };
-        //           
-        //        $scope.open = function () {
-        //           ngDialog.openConfirm({
-        //             template: 'firstDialogId',
-        //             className: 'ngdialog-theme-default',
-        //             controller: 'ClientsController',
-        //             scope: $scope,
-        //             preCloseCallback: 'preCloseCallbackOnScope',
-        //         }).then(function (value) {
-        //             console.log('Modal promise resolved. Value: ', value);
-        //         }, function (reason) {
-        //             console.log('Modal promise rejected. Reason: ', reason);
-        //             
-        //         });
-        //     };
-        //     
+               
              $scope.open = function () {
                 ngDialog.openConfirm({
                     template: 'dialogWithNestedConfirmDialogId',
@@ -68,11 +42,6 @@
                 });
             };
 
-
-            // $scope.editing = [];
-      
-           
-// 
 //           $scope.save = function(){
 //             if(!$scope.newTodo || $scope.newTodo.length < 1) 
 //                 return;
